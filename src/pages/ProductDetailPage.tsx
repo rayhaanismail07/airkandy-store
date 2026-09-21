@@ -76,7 +76,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   return (
     <div className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       {/* Breadcrumbs / Back navigation */}
-      <div className="flex items-center justify-between text-xs text-slate-400">
+      <div className="flex items-center justify-between text-xs text-wd-gray500">
         <button
           onClick={() => onNavigate('shop')}
           className="inline-flex items-center gap-1.5 hover:text-ak-teal transition-colors font-semibold cursor-pointer"
@@ -88,7 +88,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-ak-teal400 text-slate-300 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 [rounded-2px] bg-ak-warm border border-gray-200 hover:border-ak-teal400 text-wd-gray600 transition-colors cursor-pointer"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
@@ -101,8 +101,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         {/* Left Column: Media Gallery */}
         <div className="lg:col-span-6 space-y-4 sticky top-28">
           {/* Main Large Image Box with Ambient Backlight Glow */}
-          <div className="relative aspect-square w-full rounded-3xl overflow-hidden bg-white border border-gray-200 border border-ak-teal500/25 bg-slate-950/80 p-6 flex items-center justify-center shadow-2xl">
-            <div className="absolute inset-0 bg-radial-gradient from-cyan-500/15 via-transparent to-transparent opacity-70" />
+          <div className="relative aspect-square w-full [rounded-2px] overflow-hidden bg-white border border-gray-200 border border-ak-teal500/25 bg-ak-warm p-6 flex items-center justify-center shadow-wd-hover">
+            <div className="absolute inset-0 hidden opacity-70" />
 
             {/* Badges in Image */}
             <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
@@ -120,7 +120,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <img
               src={product.images[selectedImageIndex] || product.images[0]}
               alt={product.name}
-              className="max-h-full max-w-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] transition-all duration-300"
+              className="max-h-full max-w-full object-contain drop-shadow-md transition-all duration-300"
             />
           </div>
 
@@ -132,10 +132,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   key={idx}
                   onClick={() => setSelectedImageIndex(idx)}
                   className={clsx(
-                    'w-20 h-20 rounded-2xl p-2 bg-slate-950/80 border overflow-hidden transition-all flex-shrink-0 cursor-pointer',
+                    'w-20 h-20 [rounded-2px] p-2 bg-ak-warm border overflow-hidden transition-all flex-shrink-0 cursor-pointer',
                     selectedImageIndex === idx
                       ? 'border-ak-teal400 shadow-wd-hover/30 scale-105'
-                      : 'border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-700'
+                      : 'border-gray-200 opacity-70 hover:opacity-100 hover:border-ak-teal'
                   )}
                 >
                   <img src={img} alt="Thumbnail" className="w-full h-full object-contain" />
@@ -145,12 +145,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           )}
 
           {/* Quick Trust Highlights */}
-          <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs">
-            <div className="flex items-center gap-2 text-slate-300">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+          <div className="grid grid-cols-2 gap-3 p-4 [rounded-2px] bg-ak-warm border border-gray-200 text-xs">
+            <div className="flex items-center gap-2 text-wd-gray600">
+              <ShieldCheck className="w-4 h-4 text-ak-teal flex-shrink-0" />
               <span>HPLC Lab Tested (18+)</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-300">
+            <div className="flex items-center gap-2 text-wd-gray600">
               <Truck className="w-4 h-4 text-ak-teal flex-shrink-0" />
               <span>Discreet Overnight SA Post</span>
             </div>
@@ -161,15 +161,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div className="lg:col-span-6 space-y-6">
           {/* Header Info */}
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-1">
+            <div className="flex items-center gap-2 text-xs font-semibold text-wd-gray500 mb-1">
               <span className="text-ak-400 uppercase tracking-widest">{product.categoryLabel}</span>
               <span>â€¢</span>
-              <span className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-mono">
+              <span className="px-2 py-0.5 rounded-md bg-gray-100 text-wd-gray600 font-mono">
                 {product.strainType}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-display font-black text-wd-gray900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-bold text-wd-gray900 leading-tight">
               {product.name}
             </h1>
             <p className="text-sm font-medium text-ak-teal mt-1">
@@ -183,21 +183,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="text-xs font-bold text-slate-200">{product.rating}</span>
-              <span className="text-xs text-slate-400">({product.reviewCount} verified reviews)</span>
+              <span className="text-xs font-bold text-wd-gray700">{product.rating}</span>
+              <span className="text-xs text-wd-gray500">({product.reviewCount} verified reviews)</span>
             </div>
           </div>
 
           {/* Price Header */}
-          <div className="p-4 rounded-2xl bg-slate-900/80 border border-ak-teal500/20 flex items-center justify-between">
+          <div className="p-4 [rounded-2px] bg-ak-warm/80 border border-ak-teal500/20 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-400 block font-medium">Selected Variant Price:</span>
+              <span className="text-xs text-wd-gray500 block font-medium">Selected Variant Price:</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-display font-black text-wd-gray900">
+                <span className="text-3xl font-bold text-wd-gray900">
                   R{currentVariant.price * quantity}
                 </span>
                 {currentVariant.originalPrice && (
-                  <span className="text-sm text-slate-500 line-through">
+                  <span className="text-sm text-wd-gray400 line-through">
                     R{currentVariant.originalPrice * quantity}
                   </span>
                 )}
@@ -215,7 +215,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
           {/* Pack Size Variants Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+            <label className="text-xs font-bold uppercase tracking-wider text-wd-gray500 block">
               Choose Pack / Size Option:
             </label>
             <div className="grid grid-cols-1 gap-2.5">
@@ -224,10 +224,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   key={variant.id}
                   onClick={() => setSelectedVariantIndex(idx)}
                   className={clsx(
-                    'p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer',
+                    'p-3.5 [rounded-2px] border text-left flex items-center justify-between transition-all cursor-pointer',
                     selectedVariantIndex === idx
                       ? 'border-ak-teal400 bg-ak-warm/40 shadow-wd-hover/20'
-                      : 'border-slate-800 bg-slate-900/60 hover:border-slate-700'
+                      : 'border-gray-200 bg-ak-warm/60 hover:border-gray-200'
                   )}
                 >
                   <div className="flex items-center gap-3">
@@ -235,7 +235,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       className={clsx(
                         'w-4 h-4 rounded-full border flex items-center justify-center',
                         selectedVariantIndex === idx
-                          ? 'border-ak-teal400 bg-ak-teal text-slate-950'
+                          ? 'border-ak-teal400 bg-ak-teal text-wd-gray900'
                           : 'border-slate-600'
                       )}
                     >
@@ -243,17 +243,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     </div>
                     <div>
                       <span className="text-sm font-bold text-wd-gray900 block">{variant.label}</span>
-                      <span className="text-[11px] text-slate-400">
+                      <span className="text-[11px] text-wd-gray500">
                         {variant.servingsCount} active servings
                       </span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-base font-black font-display text-ak-teal">
+                    <span className="text-base font-black font-sans text-ak-teal">
                       R{variant.price}
                     </span>
                     {variant.originalPrice && (
-                      <span className="text-[11px] text-slate-500 line-through block">
+                      <span className="text-[11px] text-wd-gray400 line-through block">
                         R{variant.originalPrice}
                       </span>
                     )}
@@ -266,10 +266,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           {/* Quantity & Buy Action Bar */}
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
             {/* Quantity Stepper */}
-            <div className="flex items-center border border-slate-700 rounded-2xl bg-slate-950/80 overflow-hidden w-full sm:w-auto justify-between sm:justify-start">
+            <div className="flex items-center border border-gray-200 [rounded-2px] bg-ak-warm overflow-hidden w-full sm:w-auto justify-between sm:justify-start">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="px-4 py-3 text-slate-300 hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+                className="px-4 py-3 text-wd-gray600 hover:bg-gray-100 font-bold transition-colors cursor-pointer"
               >
                 -
               </button>
@@ -278,7 +278,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="px-4 py-3 text-slate-300 hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+                className="px-4 py-3 text-wd-gray600 hover:bg-gray-100 font-bold transition-colors cursor-pointer"
               >
                 +
               </button>
@@ -297,12 +297,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           </div>
 
           {/* Interactive Information Accordions */}
-          <div className="space-y-3 pt-4 border-t border-slate-800">
+          <div className="space-y-3 pt-4 border-t border-gray-200">
             {/* Accordion 1: Flavor Profile & Aroma */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
+            <div className="[rounded-2px] border border-gray-200 bg-ak-warm/50 overflow-hidden">
               <button
                 onClick={() => toggleAccordion('flavors')}
-                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-slate-800/40 transition-colors cursor-pointer"
+                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-gray-100/40 transition-colors cursor-pointer"
               >
                 <span className="flex items-center gap-2">
                   <span>ðŸ¬</span>
@@ -311,7 +311,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {openAccordions.flavors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
               {openAccordions.flavors && (
-                <div className="p-4 pt-0 text-xs text-slate-300 space-y-3">
+                <div className="p-4 pt-0 text-xs text-wd-gray600 space-y-3">
                   <p>{product.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {product.flavorProfile.map((f) => (
@@ -328,10 +328,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </div>
 
             {/* Accordion 2: Lab Results & Potency */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
+            <div className="[rounded-2px] border border-gray-200 bg-ak-warm/50 overflow-hidden">
               <button
                 onClick={() => toggleAccordion('lab')}
-                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-slate-800/40 transition-colors cursor-pointer"
+                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-gray-100/40 transition-colors cursor-pointer"
               >
                 <span className="flex items-center gap-2">
                   <span>ðŸ”¬</span>
@@ -340,14 +340,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {openAccordions.lab ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
               {openAccordions.lab && (
-                <div className="p-4 pt-0 text-xs text-slate-300 space-y-2">
-                  <div className="grid grid-cols-2 gap-2 bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-[11px]">
+                <div className="p-4 pt-0 text-xs text-wd-gray600 space-y-2">
+                  <div className="grid grid-cols-2 gap-2 bg-white p-3 [rounded-2px] border border-gray-200 font-mono text-[11px]">
                     <div>Batch: <strong className="text-ak-400">{product.batchNumber}</strong></div>
                     <div>Solvent Residuals: <strong className="text-emerald-400">Pass (0 PPM)</strong></div>
                     <div>Pesticides: <strong className="text-emerald-400">Non-Detected</strong></div>
                     <div>Heavy Metals: <strong className="text-emerald-400">Pass</strong></div>
                   </div>
-                  <p className="text-slate-400 text-[11px]">
+                  <p className="text-wd-gray500 text-[11px]">
                     All AirKandy inventory undergoes strict independent chromatography testing.
                   </p>
                 </div>
@@ -355,10 +355,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </div>
 
             {/* Accordion 3: Safe Consumption & Dosage Advice */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
+            <div className="[rounded-2px] border border-gray-200 bg-ak-warm/50 overflow-hidden">
               <button
                 onClick={() => toggleAccordion('dosage')}
-                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-slate-800/40 transition-colors cursor-pointer"
+                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-gray-100/40 transition-colors cursor-pointer"
               >
                 <span className="flex items-center gap-2">
                   <span>ðŸ’¡</span>
@@ -367,9 +367,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {openAccordions.dosage ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
               {openAccordions.dosage && (
-                <div className="p-4 pt-0 text-xs text-slate-300 space-y-2">
+                <div className="p-4 pt-0 text-xs text-wd-gray600 space-y-2">
                   <p>{product.consumptionAdvice}</p>
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[11px]">
+                  <div className="p-3 [rounded-2px] bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[11px]">
                     âš ï¸ Edible onset takes 45-90 minutes. Never consume more while waiting for initial onset.
                   </div>
                 </div>
@@ -377,10 +377,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </div>
 
             {/* Accordion 4: Discreet Delivery Info */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
+            <div className="[rounded-2px] border border-gray-200 bg-ak-warm/50 overflow-hidden">
               <button
                 onClick={() => toggleAccordion('delivery')}
-                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-slate-800/40 transition-colors cursor-pointer"
+                className="w-full p-4 flex items-center justify-between text-left text-sm font-bold text-wd-gray900 hover:bg-gray-100/40 transition-colors cursor-pointer"
               >
                 <span className="flex items-center gap-2">
                   <span>ðŸ“¦</span>
@@ -389,9 +389,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {openAccordions.delivery ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
               {openAccordions.delivery && (
-                <div className="p-4 pt-0 text-xs text-slate-300 space-y-2">
+                <div className="p-4 pt-0 text-xs text-wd-gray600 space-y-2">
                   <p>{product.deliveryInfo}</p>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-wd-gray500">
                     Dispatched in tamper-proof, odor-proof, unbranded packaging directly to your doorstep.
                   </p>
                 </div>
@@ -402,13 +402,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       </div>
 
       {/* Frequently Picked Together Bundle */}
-      <section className="pt-8 border-t border-slate-800/80 space-y-6">
+      <section className="pt-8 border-t border-gray-200/80 space-y-6">
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs uppercase font-bold text-ak-teal tracking-wider block">
               Bundle & Save
             </span>
-            <h2 className="text-2xl font-display font-black text-wd-gray900">
+            <h2 className="text-2xl font-bold text-wd-gray900">
               Frequently Picked Together
             </h2>
           </div>
@@ -427,4 +427,5 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     </div>
   );
 };
+
 
