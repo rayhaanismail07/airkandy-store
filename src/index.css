@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* AirKandy Brand Tokens */
+    --ak-teal:        #275C53;
+    --ak-teal-dark:   #1e4740;
+    --ak-teal-light:  #317569;
+    --ak-gold:        #E2BB53;
+    --ak-gold-dark:   #c9a43c;
+    --ak-warm:        #F5F0EA;
+    --ak-warm-dark:   #EDE7DF;
+    --ak-dark:        #565656;
+
+    /* Woodmart UI Tokens */
+    --wd-primary:           var(--ak-teal);
+    --wd-primary-hover:     var(--ak-teal-dark);
+    --wd-brd-radius:        2px;
+    --wd-btn-height:        44px;
+    --wd-form-height:       44px;
+
+    /* Woodmart Easing */
+    --ease-wd: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #565656;
+    font-family: 'Jost', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #242424;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--ak-teal);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  a:hover {
+    color: var(--ak-teal-dark);
+  }
+
+  /* Woodmart-style light scrollbars */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track  { background: #f7f7f7; }
+  ::-webkit-scrollbar-thumb  { background: #ccc; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ak-teal); }
+}
+
+@layer components {
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart Primary Button (teal fill)                      */
+  /* ──────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-ak-teal text-white font-semibold text-sm uppercase tracking-wider
+           px-7 py-3 transition-all duration-200 cursor-pointer;
+    border-radius: var(--wd-brd-radius);
+    min-height: var(--wd-btn-height);
+  }
+  .btn-primary:hover {
+    @apply bg-ak-teal-dark;
+  }
+
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart Outline Button (teal border)                    */
+  /* ──────────────────────────────────────────────────────── */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-ak-teal text-ak-teal bg-white font-semibold text-sm uppercase tracking-wider
+           px-7 py-3 transition-all duration-200 cursor-pointer;
+    border-radius: var(--wd-brd-radius);
+    min-height: var(--wd-btn-height);
+  }
+  .btn-outline:hover {
+    @apply bg-ak-teal text-white;
+  }
+
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart Product Card                                    */
+  /* ──────────────────────────────────────────────────────── */
+  .wd-product-card {
+    @apply relative bg-white overflow-hidden transition-shadow duration-300;
+    border-radius: var(--wd-brd-radius);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .wd-product-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  }
+
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart Section Title                                   */
+  /* ──────────────────────────────────────────────────────── */
+  .wd-section-title {
+    @apply text-2xl sm:text-3xl font-bold text-wd-gray900;
+  }
+
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart Tab Button                                      */
+  /* ──────────────────────────────────────────────────────── */
+  .wd-tab {
+    @apply px-5 py-2.5 text-sm font-medium text-wd-gray700 border-b-2 border-transparent
+           transition-all duration-200 cursor-pointer;
+  }
+  .wd-tab.active,
+  .wd-tab[aria-selected="true"] {
+    @apply text-ak-teal border-ak-teal;
+  }
+  .wd-tab:hover:not(.active) {
+    @apply text-wd-gray900;
+  }
+
+  /* ──────────────────────────────────────────────────────── */
+  /* Woodmart USP / Feature Strip                             */
+  /* ──────────────────────────────────────────────────────── */
+  .wd-usp-item {
+    @apply flex items-center gap-4 py-5 px-4;
+  }
+  .wd-usp-icon {
+    @apply flex-shrink-0 w-12 h-12 flex items-center justify-center text-ak-teal;
+  }
+}
+
+@layer utilities {
+  .text-ak-teal   { color: var(--ak-teal); }
+  .text-ak-gold   { color: var(--ak-gold); }
+  .bg-ak-teal     { background-color: var(--ak-teal); }
+  .bg-ak-gold     { background-color: var(--ak-gold); }
+  .bg-ak-warm     { background-color: var(--ak-warm); }
+  .border-ak-teal { border-color: var(--ak-teal); }
+  .border-ak-gold { border-color: var(--ak-gold); }
+
+  /* Woodmart hover lift */
+  .wd-lift {
+    transition: transform 0.25s var(--ease-wd), box-shadow 0.25s var(--ease-wd);
+  }
+  .wd-lift:hover {
+    transform: translateY(-4px);
+  }
+}

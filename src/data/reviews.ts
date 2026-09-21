@@ -1,0 +1,52 @@
+import { CustomerReview } from '../types';
+
+export const REVIEWS: CustomerReview[] = [
+  {
+    id: 'rev-1',
+    author: 'Kagiso M.',
+    location: 'Sandton, Johannesburg',
+    verifiedBuyer: true,
+    rating: 5,
+    date: '2 days ago',
+    title: 'The Heart Stopper gummies are unmatched!',
+    comment: 'The Lifted sugar-free gummies taste phenomenal. Half a gummy had me in the most relaxed state after a 12-hour workday. Overnight delivery to Joburg was discreet and next-day.',
+    productName: 'Heart Stopper Gummies (Sugar-Free)',
+    potencyExperience: '40mg / piece - Super potent',
+  },
+  {
+    id: 'rev-2',
+    author: 'Liam van der Merwe',
+    location: 'Camps Bay, Cape Town',
+    verifiedBuyer: true,
+    rating: 5,
+    date: '1 week ago',
+    title: 'Blue Slushie smells just like candy!',
+    comment: 'Cure on the Blue Slushie flower is world class. Thick resinous buds that grind into pure sweet blue slushie aroma. Fast EFT payment through Ozow was seamless.',
+    productName: 'Blue Slushie AAA+ Indoor Flower',
+    potencyExperience: '28% THC - Soaring high',
+  },
+  {
+    id: 'rev-3',
+    author: 'Zanele D.',
+    location: 'Umhlanga, Durban',
+    verifiedBuyer: true,
+    rating: 5,
+    date: '2 weeks ago',
+    title: 'Rainbow Stripz are my weekend essential',
+    comment: '10/10 flavor! Doesn’t taste like weed extract at all, just pure nostalgic sour candy. AirKandy customer support on WhatsApp was super responsive when I had dosage questions.',
+    productName: 'Rainbow Stripz Sour Belts',
+    potencyExperience: '20mg / strip - Perfect social buzz',
+  },
+  {
+    id: 'rev-4',
+    author: 'Gareth P.',
+    location: 'Pretoria East',
+    verifiedBuyer: true,
+    rating: 5,
+    date: '3 weeks ago',
+    title: 'Cleanest Live Rosin in SA',
+    comment: 'Pure terpene gold. You can tell this is 100% fresh frozen solventless wash. Smooth vapor, insane tropical flavor notes, zero chest harshness.',
+    productName: 'Pure Terp Live Rosin Diamonds',
+    potencyExperience: '850mg - 1 small dab does the job',
+  }
+];
