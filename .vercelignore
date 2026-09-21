@@ -3,3 +3,10 @@ dist
 dist-ssr
 *.local
 .vercel
+
+# Large print/hi-res files not needed for web deployment
+public/assets/posters/airkandy_sweet_life_poster_print_ready.pdf
+public/assets/posters/airkandy_sweet_life_poster_highres_300dpi.png
+public/assets/posters/airkandy_sweet_life_poster_smaller_logo.png
+public/assets/AirKandy.pdf
+public/assets/airkandy lifted products catalog.pdf
